@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2etxrljxfkkc"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_jo2k7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h1kta"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4x7mg"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_jo2k7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_h1kta")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_4x7mg")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+current = true
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -5)
+collision_mask = 2
+
+[node name="Hand" type="Node3D" parent="Camera3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.577887, -0.221907, -1.28352)
+
+[node name="MyHand" type="Marker3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.799056, -0.900207, -1.7053)
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

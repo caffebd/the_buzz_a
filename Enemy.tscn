@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://brjxtgj1275j3"]
+
+[ext_resource type="Script" path="res://Enemy.gd" id="1_qmsmn"]
+[ext_resource type="AudioStream" uid="uid://b7i8gdl56up5s" path="res://assets/buzzing_sound.mp3" id="2_cd6ui"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s728s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2nbi"]
+albedo_color = Color(1, 0.145098, 0.145098, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nf4ln"]
+material = SubResource("StandardMaterial3D_g2nbi")
+
+[node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_qmsmn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_s728s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_nf4ln")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="TheBuzz" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_cd6ui")
+attenuation_model = 2
+volume_db = 8.205
+unit_size = 6.0
+autoplay = true
+max_distance = 10.0
