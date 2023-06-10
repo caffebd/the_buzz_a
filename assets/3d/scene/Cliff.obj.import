@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cvobb2ikx5pba"
+path="res://.godot/imported/Cliff.obj-b47b5d95beb304c19f557dd2b6f031a0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Cliff.obj-b47b5d95beb304c19f557dd2b6f031a0.mesh"]
+
+source_file="res://assets/3d/scene/Cliff.obj"
+dest_files=["res://.godot/imported/Cliff.obj-b47b5d95beb304c19f557dd2b6f031a0.mesh", "res://.godot/imported/Cliff.obj-b47b5d95beb304c19f557dd2b6f031a0.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
